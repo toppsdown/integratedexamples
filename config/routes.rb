@@ -1,56 +1,44 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
+  # Below are all the routes to follow REST conventions
+  # Rails has a shortcut to generate all of them:
   #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  #
+  # NOTE: THIS IS ALL YOU NEED, THE EXPLICIT CODE IS JUST
+  # TO EXPLAIN WHAT THIS DOES
+  resources :comments
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
+  # Explicit routes for rails (REST) conventions
+  #
+  # This example refers to comments on a blog
 
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
+  # Show a list of all comments
+  # get 'comments', controller: 'comments', action: 'index'
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  # Routes to create a new comment
+
+  # Show the form to create a new comment
+  # get 'comments/new', controller: 'comments', action: 'new'
+
+  # Submit a form to create a new comment
+  # post 'comments', controller: 'comments', action: 'create'
+
+
+  # Routes to manage an existing comment
+  #
+  # The :id will be filled in with a number
+  # eg. https://mywebserver.com/comments/1234/edit
+
+  # Show a specific comment
+  # get 'comments/:id', controller: 'comments', action: 'show'
+
+  # Show the form to edit an existing comment
+  # get 'comments/:id/edit', controller: 'comments', action: 'edit'
+
+  # Submit the edit form to update an existing comment
+  # put 'comments/:id', controller: 'comments', action: 'update'
+
+  # Delete an existing comment
+  # delete 'comments/:id', controller: 'comments', action: 'delete'
+
 end
