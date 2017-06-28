@@ -12,6 +12,12 @@
   <% end %>
 
   <div class="actions">
+    <%= f.label :user_name %>
+    <%= f.text_field :user_name %>
+    <br>
+    <%= f.label 'Comment Body: ' %>
+    <%= f.text_field :body %>
+    <br>
     <%= f.submit %>
   </div>
 <% end %>

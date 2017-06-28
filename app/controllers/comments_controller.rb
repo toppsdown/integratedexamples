@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  # This is a callback (also called a before hook)
+  # It will run the specified method "set_comment" before executing
+  # any of the RESTful actions listed
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
@@ -56,6 +59,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.fetch(:comment, {})
+      params.fetch(:comment, {}).permit(:user_name, :body)
     end
 end
